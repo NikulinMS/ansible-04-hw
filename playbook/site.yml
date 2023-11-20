@@ -1,0 +1,24 @@
+---
+- name: Install Clickhouse
+  hosts: clickhouse
+  remote_user: debian
+#  gather_facts: false
+  roles:
+    - role: clickhouse
+      tags: clickhouse
+
+- name: Install Vector
+  hosts: vector
+  gather_facts: false
+  remote_user: debian
+  roles:
+    - role: vector-role
+      tags: vector
+
+- name: Lighthouse
+  hosts: lighthouse
+  gather_facts: false
+  remote_user: debian
+  roles:
+    - role: lighthouse-role
+      tags: lighthouse
